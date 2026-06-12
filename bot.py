@@ -3,7 +3,7 @@ from datetime import date
 def get_weather(city="Thrivananthapuram"):
     url=f"https://wttr.in/{city}?format=3"
     try:
-        response=requests.get(url, timeout(10))
+        response=requests.get(url,timeout=10)
         response.raise_for_status()
         return response.text.strip()
     except Exception as e:
@@ -11,7 +11,7 @@ def get_weather(city="Thrivananthapuram"):
 def get_quote():
     url="https://zenquotes.io/api/random"
     try:
-        response=requests.get(url, timeout(10))
+        response=requests.get(url,timeout=10)
         response.raise_for_status()
         data=response.json()
         quote=data[0]["q"]
@@ -40,5 +40,5 @@ def run():
     with open("daily_summary.txt","w",encoding="utf-8") as f:
         f.write(summary)
     print("Pulse ran successfully.")
-if _name_=="_main_":
+if __name__ == "__main__":
     run()
