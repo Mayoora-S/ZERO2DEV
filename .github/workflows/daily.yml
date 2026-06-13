@@ -16,6 +16,10 @@ jobs:
             - name: Install dependencies
               run: pip install -r requirements.txt
             - name: Run Pulse bot
+              env:
+                EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+                EMAIL_RECEIVER: ${{ secrets.EMAIL_RECEIVER }}
+                EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
               run: python bot.py
             - name: Upload summary as artifact
               uses: actions/upload-artifact@v4
